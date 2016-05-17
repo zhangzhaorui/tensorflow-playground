@@ -1,8 +1,8 @@
 FROM nodejs
 
-RUN sudo yum -y install npm
-RUN sudo git clone https://github.com/tensorflow/playground
-RUN sudo npm install 
-RUN sudo npm run serve 
+RUN  yum -y install npm
+RUN  git clone https://github.com/tensorflow/playground
+RUN  npm install 
+RUN  npm run server 
 
 EXPOSE  8080
