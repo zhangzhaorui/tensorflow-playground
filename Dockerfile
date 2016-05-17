@@ -1,4 +1,4 @@
-FROM nodejs
+FROM node
 
 RUN  yum -y install npm
 RUN  git clone https://github.com/tensorflow/playground
