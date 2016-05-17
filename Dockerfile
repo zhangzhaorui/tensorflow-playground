@@ -1,4 +1,4 @@
-FROM node.js
+FROM nodejs
 
 RUN git clone https://github.com/tensorflow/playground
 RUN npm install 
