@@ -11,4 +11,4 @@ RUN  npm install
 EXPOSE  8080
 
 
-CMD npm run server
+CMD npm run serve
