@@ -1,7 +1,7 @@
 FROM node
 
 RUN  git clone https://github.com/tensorflow/playground
-RUN  cd playground/
+RUN  cd /playground/
 RUN  npm install 
 
 
