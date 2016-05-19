@@ -34,7 +34,9 @@
 [songzx@openshift-container-deploy2 ~]$ oc get po
 
 NAME                     READY     STATUS      RESTARTS   AGE
+
 szx-playground-1-build   0/1       Completed   0          4m
+
 可以看到我们的代码build完成
 
 3.build完成后我们使用命令把服务run起来
@@ -45,7 +47,9 @@ NAME             DOCKER REPO                                TAGS      UPDATED
 node             172.30.188.59:5000/songzx/node             latest    5 minutes ago
 szx-playground   172.30.188.59:5000/songzx/szx-playground   latest    About a minute ago
 [songzx@openshift-container-deploy2 ~]$ oc run playground --image=172.30.188.59:5000/songzx/szx-playground
+
 deploymentconfig "playground" created
+
 
 首先我们先查看build好的镜像，然后使用oc run命令去运行这个镜像，等待镜像跑起来
 
@@ -58,7 +62,9 @@ NAME                     READY     STATUS      RESTARTS   AGE
 playground-1-4bubz       1/1       Running     0          1m
 szx-playground-1-build   0/1       Completed   0          7m
 
+
 我们可以看到镜像已经run起来了，现在我们还剩最后一点工作，就可以正常访问了。
+
 
 5.我们去查看现在所有的dc，然后把这个dc生成一个svc，并且指定80端口
 
@@ -66,6 +72,7 @@ szx-playground-1-build   0/1       Completed   0          7m
 
 NAME         REVISION   REPLICAS   TRIGGERED BY
 playground   1          1          config
+
 [songzx@openshift-container-deploy2 ~]$ oc expose dc playground --port=80
 
 service "playground" exposed
@@ -76,6 +83,7 @@ service "playground" exposed
 
 NAME         CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
 playground   172.30.204.201   <none>        80/TCP    1m
+
 [songzx@openshift-container-deploy2 ~]$ oc expose svc playground
 
 route "playground" exposed
