@@ -11,6 +11,8 @@
 1.首先我们去将github上的代码build下来
 
 [songzx@openshift-container-deploy2 ~]$ oc new-build https://github.com/asiainfoLDP/szx-playground.git
+
+
 --> Found Docker image 716fd33 (26 hours old) from Docker Hub for "node"
 
     * An image stream will be created as "node:latest" that will track the source image
@@ -30,6 +32,7 @@
 2.查看一下我们代码build成功与否
 
 [songzx@openshift-container-deploy2 ~]$ oc get po
+
 NAME                     READY     STATUS      RESTARTS   AGE
 szx-playground-1-build   0/1       Completed   0          4m
 可以看到我们的代码build完成
@@ -37,6 +40,7 @@ szx-playground-1-build   0/1       Completed   0          4m
 3.build完成后我们使用命令把服务run起来
 
 [songzx@openshift-container-deploy2 ~]$ oc get is
+
 NAME             DOCKER REPO                                TAGS      UPDATED
 node             172.30.188.59:5000/songzx/node             latest    5 minutes ago
 szx-playground   172.30.188.59:5000/songzx/szx-playground   latest    About a minute ago
@@ -49,6 +53,7 @@ deploymentconfig "playground" created
 4.查看镜像run的情况
 
 [songzx@openshift-container-deploy2 ~]$ oc get po
+
 NAME                     READY     STATUS      RESTARTS   AGE
 playground-1-4bubz       1/1       Running     0          1m
 szx-playground-1-build   0/1       Completed   0          7m
@@ -58,17 +63,21 @@ szx-playground-1-build   0/1       Completed   0          7m
 5.我们去查看现在所有的dc，然后把这个dc生成一个svc，并且指定80端口
 
 [songzx@openshift-container-deploy2 ~]$ oc get dc
+
 NAME         REVISION   REPLICAS   TRIGGERED BY
 playground   1          1          config
 [songzx@openshift-container-deploy2 ~]$ oc expose dc playground --port=80
+
 service "playground" exposed
 
 6.我们把生成的svc再生成一个route，就可以去进行外网访问了
 
 [songzx@openshift-container-deploy2 ~]$ oc get svc
+
 NAME         CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
 playground   172.30.204.201   <none>        80/TCP    1m
 [songzx@openshift-container-deploy2 ~]$ oc expose svc playground
+
 route "playground" exposed
 
 我们可以看到route已经生成
@@ -76,6 +85,7 @@ route "playground" exposed
 7.最后一步，通过查看每个服务对应的route，去进行外网访问。
 
 [songzx@openshift-container-deploy2 ~]$ oc get route
+
 NAME         HOST/PORT                         PATH      SERVICE      TERMINATION   LABELS
 playground   playground-songzx.app.dataos.io             playground                 run=playground
 
