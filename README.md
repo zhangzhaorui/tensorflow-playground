@@ -71,7 +71,8 @@ szx-playground-1-build   0/1       Completed   0          7m
 [songzx@openshift-container-deploy2 ~]$ oc get dc
 
 NAME         REVISION   REPLICAS   TRIGGERED BY
-playground   1          1          config
+
+playground    1          1          config
 
 [songzx@openshift-container-deploy2 ~]$ oc expose dc playground --port=80
 
@@ -82,6 +83,7 @@ service "playground" exposed
 [songzx@openshift-container-deploy2 ~]$ oc get svc
 
 NAME         CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+
 playground   172.30.204.201   <none>        80/TCP    1m
 
 [songzx@openshift-container-deploy2 ~]$ oc expose svc playground
@@ -95,6 +97,7 @@ route "playground" exposed
 [songzx@openshift-container-deploy2 ~]$ oc get route
 
 NAME         HOST/PORT                         PATH      SERVICE      TERMINATION   LABELS
+
 playground   playground-songzx.app.dataos.io             playground                 run=playground
 
 8.访问上图中的域名，即可访问我们搭建的这个服务。
