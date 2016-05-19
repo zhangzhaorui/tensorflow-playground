@@ -32,7 +32,7 @@
 
 
 #部署playground
-1.首先我们去将github上的代码build下来
+1.首先我们去将github上的代码`oc new-build`下来
 
     [songzx@openshift-container-deploy2 ~]$ oc new-build https://github.com/asiainfoLDP/szx-playground.git
 
@@ -46,7 +46,7 @@
 可以看到我们的代码build完成
 
 
-3.build完成后我们使用命令把服务run起来
+3.build完成后我们使用命令把服务`oc run`起来
 
     [songzx@openshift-container-deploy2 ~]$ oc get is
     NAME             DOCKER REPO                                TAGS      UPDATED
@@ -57,7 +57,7 @@
     deploymentconfig "playground" created
 
 
-首先我们先查看build好的镜像，然后使用oc run命令去运行这个镜像，等待镜像跑起来
+首先我们先查看build好的镜像，然后使用`oc run`命令去运行这个镜像，等待镜像跑起来
 
 
 
