@@ -32,12 +32,12 @@
 
 
 #部署playground
-1.首先我们去将github上的代码`oc new-build`下来
+`**一**`.首先我们去将github上的代码`oc new-build`下来
 
     [songzx@openshift-container-deploy2 ~]$ oc new-build https://github.com/asiainfoLDP/szx-playground.git
 
 
-2.查看一下我们代码build成功与否
+`**二**`.查看一下我们代码build成功与否
 
     [songzx@openshift-container-deploy2 ~]$ oc get po
     NAME                     READY     STATUS      RESTARTS   AGE
@@ -46,7 +46,7 @@
 可以看到我们的代码build完成
 
 
-3.build完成后我们使用命令把服务`oc run`起来
+`**三**`.build完成后我们使用命令把服务`oc run`起来
 
     [songzx@openshift-container-deploy2 ~]$ oc get is
     NAME             DOCKER REPO                                TAGS      UPDATED
@@ -61,7 +61,7 @@
 
 
 
-4.查看镜像run的情况
+`**四**`.查看镜像run的情况
 
     [songzx@openshift-container-deploy2 ~]$ oc get po
     NAME                     READY     STATUS      RESTARTS   AGE
@@ -75,7 +75,7 @@
 
 
 
-5.我们去查看现在所有的dc，然后把这个dc生成一个svc，并且指定80端口
+`**五**`.我们去查看现在所有的dc，然后把这个dc生成一个svc，并且指定80端口
 
     [songzx@openshift-container-deploy2 ~]$ oc get dc
     NAME         REVISION   REPLICAS   TRIGGERED BY
@@ -87,7 +87,7 @@
 
 
 
-6.我们把生成的svc再生成一个route，就可以去进行外网访问了
+`**六**`.我们把生成的svc再生成一个route，就可以去进行外网访问了
 
     [songzx@openshift-container-deploy2 ~]$ oc get svc
 
@@ -105,7 +105,7 @@
 
 
 
-7.最后一步，通过查看每个服务对应的route，去进行外网访问。
+`**七**`.最后一步，通过查看每个服务对应的route，去进行外网访问。
 
     [songzx@openshift-container-deploy2 ~]$ oc get route 
      NAME         HOST/PORT                         PATH      SERVICE      TERMINATION   LABELS
@@ -117,6 +117,6 @@
 
 
 
-8.访问上图中的域名，即可访问我们搭建的这个服务。
+`**八**`.访问上图中的域名，即可访问我们搭建的这个服务。
 
 
