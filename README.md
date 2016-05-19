@@ -27,6 +27,11 @@
 --> Success
     Build configuration "szx-playground" created and build triggered.
     Run 'oc logs -f bc/szx-playground' to stream the build progress.
+    
+    
+    
+    
+    
 
 
 2.查看一下我们代码build成功与否
@@ -38,6 +43,10 @@ NAME                     READY     STATUS      RESTARTS   AGE
 szx-playground-1-build   0/1       Completed   0          4m
 
 可以看到我们的代码build完成
+
+
+
+
 
 3.build完成后我们使用命令把服务run起来
 
@@ -54,6 +63,11 @@ deploymentconfig "playground" created
 首先我们先查看build好的镜像，然后使用oc run命令去运行这个镜像，等待镜像跑起来
 
 
+
+
+
+
+
 4.查看镜像run的情况
 
 [songzx@openshift-container-deploy2 ~]$ oc get po
@@ -64,6 +78,12 @@ szx-playground-1-build   0/1       Completed   0          7m
 
 
 我们可以看到镜像已经run起来了，现在我们还剩最后一点工作，就可以正常访问了。
+
+
+
+
+
+
 
 
 5.我们去查看现在所有的dc，然后把这个dc生成一个svc，并且指定80端口
@@ -77,6 +97,12 @@ playground    1          1          config
 [songzx@openshift-container-deploy2 ~]$ oc expose dc playground --port=80
 
 service "playground" exposed
+
+
+
+
+
+
 
 6.我们把生成的svc再生成一个route，就可以去进行外网访问了
 
@@ -92,6 +118,12 @@ route "playground" exposed
 
 我们可以看到route已经生成
 
+
+
+
+
+
+
 7.最后一步，通过查看每个服务对应的route，去进行外网访问。
 
 [songzx@openshift-container-deploy2 ~]$ oc get route
@@ -99,5 +131,11 @@ route "playground" exposed
 NAME         HOST/PORT                         PATH      SERVICE      TERMINATION   LABELS
 
 playground   playground-songzx.app.dataos.io             playground                 run=playground
+
+
+
+
+
+
 
 8.访问上图中的域名，即可访问我们搭建的这个服务。
