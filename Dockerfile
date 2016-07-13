@@ -2,7 +2,7 @@ FROM node
 
 RUN  git clone https://github.com/tensorflow/playground
 RUN  cd /playground/
-
+RUN echo "registry=https://registry.npm.taobao.org" > ~/.npmrc
 WORKDIR /playground/
 
 RUN  npm install 
