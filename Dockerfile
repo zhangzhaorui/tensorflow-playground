@@ -1,4 +1,4 @@
-FROM registry.dataos.io/training/node
+FROM node:latest
 
 RUN  git clone https://github.com/tensorflow/playground
 RUN  cd /playground/
