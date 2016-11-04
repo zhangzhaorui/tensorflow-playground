@@ -1,4 +1,4 @@
-FROM node:latest
+FROM registry.dataos.io/library/node:hehl
 
 RUN  git clone https://github.com/tensorflow/playground
 RUN  cd /playground/
